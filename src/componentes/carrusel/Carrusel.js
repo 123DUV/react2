@@ -1,11 +1,11 @@
 import React from 'react'
-import imagen1 from './imagen1.jfif'
-import imagen2 from './imagen2.jpeg'
-import imagen3 from './imagen3.jfif'
-import imagen4 from './imagen4.webp'
-import imagen5 from './imagen5.jpg'
+// import imagen1 from './imagen1.jfif'
+// import imagen2 from './imagen2.jpeg'
+// import imagen3 from './imagen3.jfif'
+// import imagen4 from './imagen4.webp'
+// import imagen5 from './imagen5.jpg'
 import imagen6 from './imagen6.jpg'
-import imagen7 from './imagen7.jpeg'
+// import imagen7 from './imagen7.jpeg'
 import './carrusel.css'
 function Carrusel() {
 
@@ -21,7 +21,7 @@ function Carrusel() {
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6" aria-label="Slide 7"></button>
             </div>
             <div className="carousel-inner">
-                <div className="carousel-item active" data-bs-interval="1000">
+                {/* <div className="carousel-item active" data-bs-interval="1000">
                     <img src={imagen1} className="d-block w-100" alt="..." />
                 </div>
                 <div className="carousel-item">
@@ -35,13 +35,13 @@ function Carrusel() {
                 </div>
                 <div className="carousel-item" >
                     <img src={imagen5} className="d-block w-100" alt="..." />
-                </div>
+                </div> */}
                 <div className="carousel-item" >
                     <img src={imagen6} className="d-block w-100" alt="..." />
                 </div>
-                <div className="carousel-item" >
+                {/* <div className="carousel-item" >
                     <img src={imagen7} className="d-block w-100" alt="..." />
-                </div>
+                </div> */}
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>

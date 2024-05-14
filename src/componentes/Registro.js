@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Header from './header/Header';
 import Footer from './footer/Footer';
-
+import Swal from 'sweetalert2';
 
 export default function Registro() {
 
@@ -75,7 +75,7 @@ export default function Registro() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        let validPassword = /^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,}$/  //Expersión regular para: Mínimo 8 caracteres de longitud. Almenos una letra mayúscula. Almenos una letra minúscula. Almenos un número. Almenos un caracter especial. https://uibakery.io/regex-library/password
+        let validPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/;    //Expersión regular para: Mínimo 8 caracteres de longitud. Almenos una letra mayúscula. Almenos una letra minúscula. Almenos un número. Almenos un caracter especial. https://uibakery.io/regex-library/password
         let validEmail = /^\w+([.-_+]?\w+)@\w+([.-]?\w+)(\.\w{2,10})+$/; //Expresión regular para validar email, es decir, que el email ingresado tenga el formato correcto de una dirección de correo electrónico
 
         if (values.identificacion.length < 5 || values.identificacion.length > 10 || values.identificacion.length === 0) {
@@ -125,7 +125,7 @@ export default function Registro() {
         }
 
 
-        /*fetch('http://localhost:3001/registro-usuario', {
+        fetch('http://localhost:3001/registro-usuario', {
             method: 'POST',
             headers: { "Content-Type": "application/json", 'Accept': 'application/json' },
             body: JSON.stringify(values)
@@ -149,6 +149,7 @@ export default function Registro() {
                     })
 
                 }
+                
             })
             .catch((error) => {
                 //alert("No fue posible finalizar el proceso de registro por un error " + error)
@@ -156,7 +157,7 @@ export default function Registro() {
                     title: "No fue posible finalizar el proceso de registro por un error interno del servidor ",
                     icon: "error"
                 })
-            })*/
+            })
     }
 
 
