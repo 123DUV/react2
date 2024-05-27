@@ -1,4 +1,4 @@
-import React from 'react'
+
 import './header.css'
 import LoginIcon from '@mui/icons-material/Login';
 import HomeIcon from '@mui/icons-material/Home';
@@ -8,16 +8,24 @@ import FilePresentIcon from '@mui/icons-material/FilePresent';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { Link } from 'react-router-dom'
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import React, { useState } from 'react';
+import Cookies from 'universal-cookie'
+
 
 export default function Header() {
+
+   
+    
+    
     return (
         <div className='contenedor'>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <nav className="navbar navbar-expand-lg bg-white">
                 <div className="container-fluid">
-                    <img src='logo.png' className='logo' alt='logo'/>
+                    <img src='mc.gif' className='logo' alt=''/>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
+                            <li className="nav-item" >
                                 <HomeIcon/>
                                 <a className="nav-link active" aria-current="page" href="#">Inicio</a>
                             </li>
@@ -52,7 +60,10 @@ export default function Header() {
                                 <a className="nav-link disabled" aria-disabled="true">Iniciar Sesion</a>
                             </li>
                             </Link>
+                          
                         </ul>
+                         
+                        
                         <form className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                             <button className="btn btn-outline-success" type="submit">Search</button>
