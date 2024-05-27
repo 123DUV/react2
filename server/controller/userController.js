@@ -10,7 +10,7 @@
 //             const userData = await fs.readFile(userFilePath, 'utf8');
 //             const users = JSON.parse(userData);
 
-//             const ultimo =users.length;
+//             const ultimo =users.length;..
 //             const usuarioNuevo={
 //                 id: ultimo +1,
 //                 departamento: req.body.departamento,
