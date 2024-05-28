@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.742e7abf.css",
+    "main.js": "/static/js/main.8f558eaa.js",
+    "static/js/453.bcb194fb.chunk.js": "/static/js/453.bcb194fb.chunk.js",
+    "static/media/imagen3.png": "/static/media/imagen3.59197080824862636041.png",
+    "static/media/imagen4.png": "/static/media/imagen4.de3b133cecc53052052c.png",
+    "static/media/spiderman.jpg": "/static/media/spiderman.378a6191f986f1d6c36c.jpg",
+    "static/media/imagen2.avif": "/static/media/imagen2.05369fc8ce97d4c025b9.avif",
+    "static/media/com.png": "/static/media/com.acd9f4097ad37d479f22.png",
+    "static/media/tlou.jpg": "/static/media/tlou.1e1b868b8102b72a2946.jpg",
+    "static/media/imagen1.webp": "/static/media/imagen1.a5dcfafa175a84c0bb53.webp",
+    "static/media/milesmorales.jpg": "/static/media/milesmorales.ac6a72d16352266a51ca.jpg",
+    "static/media/uncharted.jpg": "/static/media/uncharted.a1c3faf9583da94d631d.jpg",
+    "static/media/mk1.jpg": "/static/media/mk1.ebeffbabab79c659361f.jpg",
+    "static/media/itera3.jpg": "/static/media/itera3.2c5ae735e920f98c7a75.jpg",
+    "static/media/st.jpg": "/static/media/st.d0ac990e62ad586f57f2.jpg",
+    "static/media/reddead.jpg": "/static/media/reddead.1bc7786e8cff12e43283.jpg",
+    "static/media/gowr.jpg": "/static/media/gowr.dff7022e215920e5f2b7.jpg",
+    "static/media/tlou2.jpg": "/static/media/tlou2.5072d48dcfd9c5814287.jpg",
+    "index.html": "/index.html",
+    "main.742e7abf.css.map": "/static/css/main.742e7abf.css.map",
+    "main.8f558eaa.js.map": "/static/js/main.8f558eaa.js.map",
+    "453.bcb194fb.chunk.js.map": "/static/js/453.bcb194fb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.742e7abf.css",
+    "static/js/main.8f558eaa.js"
+  ]
+}
