@@ -18,7 +18,9 @@ export default [
         plataforma: "pc",
         descripcion: "Shader Minecraft",
         image: com,
-        precio: "$free"
+        precio: "$free",
+        precioCarrito:1000,
+        cantidad:1,
     },
     {
         id: 2,
@@ -26,7 +28,9 @@ export default [
         plataforma: "pc",
         descripcion: "Shader Minecraft",
         image: bsl,
-        precio: "$free"
+        precio: "$free",
+        precioCarrito:1000,
+        cantidad:1,
     },
     {
         id: 3,
@@ -34,7 +38,9 @@ export default [
         plataforma: "pc",
         descripcion: "Shader Minecraft",
         image: itera,
-        precio: "$free"
+        precio: "$free",
+        precioCarrito:1000,
+        cantidad:1,
     },
     {
         id: 4,
@@ -42,7 +48,9 @@ export default [
         plataforma: "ps4",
         descripcion: "Juego para ps4",
         image: gowr,
-        precio: "$200.000 COP"
+        precio: "$200.000 COP",
+        precioCarrito:1000,
+        cantidad:1,
     },
     {
         id: 5,
@@ -50,7 +58,9 @@ export default [
         plataforma: "ps4",
         descripcion: "Juego para ps4",
         image: milesmorales,
-        precio: "$200.000 COP"
+        precio: "$200.000 COP",
+        precioCarrito:1000,
+        cantidad:1,
     },
     {
         id: 6,
@@ -58,7 +68,9 @@ export default [
         plataforma: "ps5",
         descripcion: "Juego para ps5",
         image: mk1,
-        precio: "$300.000 COP"
+        precio: "$300.000 COP",
+        precioCarrito:1000,
+        cantidad:1,
     },
     {
         id: 7,
@@ -66,7 +78,9 @@ export default [
         plataforma: "ps4",
         descripcion: "Juego para ps4",
         image: reddead,
-        precio: "$240.000 COP"
+        precio: "$240.000 COP",
+        precioCarrito:1000,
+        cantidad:1,
     },
     {
         id: 8,
@@ -74,7 +88,9 @@ export default [
         plataforma: "ps4",
         descripcion: "Juego para ps4",
         image: st,
-        precio: "$200.000 COP"
+        precio: "$200.000 COP",
+        precioCarrito:1000,
+        cantidad:1,
     },
     {
         id: 9,
@@ -82,7 +98,9 @@ export default [
         plataforma: "ps4",
         descripcion: "Juego para ps4",
         image: tlou,
-        precio: "$300.000 COP"
+        precio: "$300.000 COP",
+        precioCarrito:1000,
+        cantidad:1,
     },
     {
         id: 10,
@@ -90,7 +108,9 @@ export default [
         plataforma: "ps4",
         descripcion: "Juego para ps4",
         image: tlou2,
-        precio: "$300.000 COP"
+        precio: "$300.000 COP",
+        precioCarrito:1000,
+        cantidad:1,
     },
     {
         id: 11,
@@ -98,6 +118,8 @@ export default [
         plataforma: "ps4",
         descripcion: "Juego para ps4",
         image: uncharted,
-        precio: "$200.000 COP"
+        precio: "$200.000 COP",
+        precioCarrito:1000,
+        cantidad:1,
     },
 ]

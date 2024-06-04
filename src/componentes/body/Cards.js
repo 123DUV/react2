@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import {dataContxt} from "../context/DataContxt"
+import {dataContext} from "../context/DataContxt"
 
 export default function Cards(props) {
-  const {setLibrosDeCarrito} = useContext(dataContxt)
+  const {setLibroDeCarrito} = useContext(dataContext)
   function addToCart(){
-    setLibrosDeCarrito((currentLibros)=>{
+    setLibroDeCarrito((currentLibros)=>{
       const isItemFound = currentLibros.find((item)=>item.id===props.item.id);
       console.log(isItemFound);
       if(isItemFound){
@@ -30,7 +30,7 @@ export default function Cards(props) {
             <button
             type='button'
             class="btn btn-primary"
-            onClick={}
+            onClick={addToCart}>Agregar</button>
 
             <button type="button" class="btn btn-outline-primary">Comprar</button>
         </div>
