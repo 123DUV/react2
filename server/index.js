@@ -11,9 +11,25 @@ app.use(cors());
 
 
 app.get('/', (req, res) => {
-    res.send('saludando desde el backend')  
+    let config = {
+        method : "GET",
+        maxBodylength: Infinity,
+        url: "https://api.jsonbin.io/v3/b/6654e46bad19ca34f8701ca7",
+        headers:{
+            'Content-Type': 'application/json',
+            "X-Master-Key": "$2a$10$WQluOHcKUZmklnCjHnmOfOant.9JMsOvhj/GMzUvrYQOVf.VDHkhO"
 
-})
+        }
+    }
+        axios(config)
+        .then(result =>{
+            res.send(result.data.record);
+        })
+    })
+    
+
+
+
 
 const user = require('./controller/userController');
 app.use("/registro-usuario", user.register);

@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import colombiaData from './colombia'; // Importa el archivo colombia.js
 
 export default function Registro() {
+    let URL =process.env.REACT_APP_ENVIRONMENT
     const [identificacionError, setIdentificacionError] = useState(false);
     const [nomError, setNomError] = useState(false);
     const [apellidoError, setApellidoError] = useState(false);
@@ -156,7 +157,14 @@ export default function Registro() {
         }
 
 
-        fetch('http://localhost:3001/registro-usuario', {
+        // fetch('http://localhost:3001/registro-usuario', {
+        //     method: 'POST',
+        //     headers: {
+        //         "Content-Type": "application/json", 'Accept': 'application/json'
+        //     },
+        //     body: JSON.stringify(values)
+        // })
+        fetch(`${URL}/registro-usuario`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json", 'Accept': 'application/json'
