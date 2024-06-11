@@ -1,50 +1,73 @@
 import React, { useContext } from 'react'
-import { DataProvider } from '../context/DataContxt'
+import { DataContxt } from '../context/DataContxt'
+
 
 export default function carritoElement() {
+    const { LibroDeCarrito, setLibroDeCarrito } = useContext(DataContxt)
+    const eliminarLibroDelCarrito = (e) => {
+        const librosFiltrados = LibroDeCarrito.filter((filtro) => filtro.id !== Number(e.currentTarget.id))
+        setLibroDeCarrito(librosFiltrados)
+    }
+
+    const cantidad = () => {
+        setLibroDeCarrito((actualesLibs) => {
+            return actualesLibs.map((libs) => {
+                const valor = document.getElementById(libs.id)
+                return { ...libs, precioCarrito: libs.precio * valor.ariaValueMax, cantidad: valor.value }
+            })
+        })
+    }
+    const formatoNumero = (number) => {
+        return new Intl.NumberFormat().format(number)
+
+
+    }
     return LibroDeCarrito.map((libs) => {
-        return(
-            `
-            <div class="card rounded-3 mb-4">
-                <div class="card-body p-4">
-                    <div class="row d-flex justify-content-between align-items-center">
-                        <div class="col-md-2 col-lg-2 col-xl-2">
-                            <img
-                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                                class="src" alt="Cotton T-shirt">
-                        </div>
-                        <div class="col-md-3 col-lg-3 col-xl-3">
-                            <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                            <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
-                        </div>
-                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                <i class="fas fa-minus"></i>
-                            </button>
+        return (
+            <section className="h-100">
+                <div className="card rounded-3 mb-4">
+                    <div className="card-body p-4">
+                        <div className="row d-flex justify-content-between align-items-center">
+                            <div className="col-md-2 col-lg-2 col-xl-2">
+                                <img
+                                    src={libs.image}
+                                    className='img-fluid rounded-3' alt='imagen' />
+                            </div>
+                            <div className="col-md-3 col-lg-3 col-xl-3">
+                                <p className="lead fw-normal mb-2">{libs.title}</p>
+                                <p><span class="text-muted">Size: </span>M <span className="text-muted">Color: </span>Grey</p>
+                            </div>
+                            <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                    <i className="fas fa-minus"></i>
+                                </button>
 
-                            <input id="form1" min="0" name="quantity" value="2" type="number"
-                                class="form-control form-control-sm" />
+                                <input id={libs.id} min="0" name="quantity" value={libs.cantidad} type="number" onChange={cantidad}
+                                    className="form-control form-control-sm" />
 
-                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                            <h5 class="mb-0">$499.00</h5>
-                        </div>
-                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                            <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                    <i className="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                <h5 className="mb-0">${formatoNumero(libs.precioCarrito)}</h5>
+                            </div>
+                            <div className="col-md-1 col-lg-1 col-xl-1 text-end">
+                                <button className="btn btn-danger" id={libs.id} onclick={eliminarLibroDelCarrito}> <i className="bi bi-trash3-fill"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            `
+
+            
+            </section > 
         )
-    })
+})
 }
+
 
 
 

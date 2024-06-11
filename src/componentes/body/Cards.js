@@ -2,10 +2,11 @@ import React, { useContext } from 'react'
 import {dataContext} from "../context/DataContxt"
 
 export default function Cards(props) {
+ 
   const {setLibroDeCarrito} = useContext(dataContext)
   function addToCart(){
     setLibroDeCarrito((currentLibros)=>{
-      const isItemFound = currentLibros.find((item)=>item.id===props.item.id);
+      const isItemFound = currentLibros.find((item)=>item.id==props.items.id);
       console.log(isItemFound);
       if(isItemFound){
         return currentLibros.map((item)=>{
