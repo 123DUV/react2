@@ -8,6 +8,7 @@ import { Routes, Route, HashRouter } from "react-router-dom"
 import Login from './componentes/Login';
 import DataProvider from './componentes/context/DataContxt';
 import CarritoVacio from './componentes/carrito/CarritoVacio';
+import Carrito from './componentes/carrito/CarritoContent';
 function App() {
   return (
     <DataProvider>
@@ -20,6 +21,7 @@ function App() {
           <Route exact path='/sesioniniciada' element={<SesionIniciada />} />
 
           <Route exact path='*' element={<NotFound />} />
+          <Route exact path='/carrito' element={<Carrito/>} />
           <Route exact path='/carrito-vacio' element={<CarritoVacio />} />
         </Routes>
       </HashRouter>

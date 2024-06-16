@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { DataContxt } from '../context/DataContxt'
+import { dataContext } from '../context/DataContxt'
 
 
-export default function carritoElement() {
-    const { LibroDeCarrito, setLibroDeCarrito } = useContext(DataContxt)
+export default function CarritoElement() {
+    const { LibroDeCarrito, setLibroDeCarrito } = useContext(dataContext)
     const eliminarLibroDelCarrito = (e) => {
         const librosFiltrados = LibroDeCarrito.filter((filtro) => filtro.id !== Number(e.currentTarget.id))
         setLibroDeCarrito(librosFiltrados)
@@ -11,9 +11,10 @@ export default function carritoElement() {
 
     const cantidad = () => {
         setLibroDeCarrito((actualesLibs) => {
+            console.log("actuales libs: "+actualesLibs)
             return actualesLibs.map((libs) => {
                 const valor = document.getElementById(libs.id)
-                return { ...libs, precioCarrito: libs.precio * valor.ariaValueMax, cantidad: valor.value }
+                return { ...libs, precioCarrito: libs.precioCarrito * valor.ariaValueMax, cantidad: valor.value }
             })
         })
     }
@@ -44,7 +45,7 @@ export default function carritoElement() {
                                 </button>
 
                                 <input id={libs.id} min="0" name="quantity" value={libs.cantidad} type="number" onChange={cantidad}
-                                    className="form-control form-control-sm" />
+                                    className="form-control form-control-sm" readOnly/>
 
                                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
@@ -55,7 +56,7 @@ export default function carritoElement() {
                                 <h5 className="mb-0">${formatoNumero(libs.precioCarrito)}</h5>
                             </div>
                             <div className="col-md-1 col-lg-1 col-xl-1 text-end">
-                                <button className="btn btn-danger" id={libs.id} onclick={eliminarLibroDelCarrito}> <i className="bi bi-trash3-fill"></i></button>
+                                <button className="btn btn-danger" id={libs.id} onClick={eliminarLibroDelCarrito}> <i className="bi bi-trash3-fill"></i></button>
                             </div>
                         </div>
                     </div>

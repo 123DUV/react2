@@ -6,14 +6,15 @@ export default function Cards(props) {
   const {setLibroDeCarrito} = useContext(dataContext)
   function addToCart(){
     setLibroDeCarrito((currentLibros)=>{
-      const isItemFound = currentLibros.find((item)=>item.id==props.items.id);
+      console.log(currentLibros)
+      const isItemFound = currentLibros.find((items)=>items.id==props.items.id);
       console.log(isItemFound);
       if(isItemFound){
-        return currentLibros.map((item)=>{
-          if(item.id===props.item.id){
-            return {...item,cantidad: Number(item.cantidad)+1, precioCarrito: item.precioCarrito+item.precio}
+        return currentLibros.map((items)=>{
+          if(items.id===props.items.id){
+            return {...items,cantidad: Number(items.cantidad)+1, precioCarrito: items.precioCarrito+items.precio}
           }else{
-            return item;
+            return items;
           }
         })
       }else{
