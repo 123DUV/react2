@@ -1,4 +1,4 @@
-const express =require('express');
+const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -12,21 +12,21 @@ app.use(cors());
 
 app.get('/', (req, res) => {
     let config = {
-        method : "GET",
+        method: "GET",
         maxBodylength: Infinity,
         url: "https://api.jsonbin.io/v3/b/6654e46bad19ca34f8701ca7",
-        headers:{
+        headers: {
             'Content-Type': 'application/json',
             "X-Master-Key": "$2a$10$WQluOHcKUZmklnCjHnmOfOant.9JMsOvhj/GMzUvrYQOVf.VDHkhO"
 
         }
     }
-        axios(config)
-        .then(result =>{
+    axios(config)
+        .then(result => {
             res.send(result.data.record);
         })
-    })
-    
+})
+
 
 
 
@@ -37,17 +37,20 @@ app.use("/registro-usuario", user.register);
 
 
 const PORT = 3001;
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
 
     console.log('servidor corriendo en el puerto', PORT);
 });
 
-const conexion = require('./configBD')
+const conexion = require('./configBD/configBD.js')
 
-app.get("/todos-los-Usuarios",(req, res)=>{
-    if(err) throw err;
-    conexion.query("SELECT * FROM sql10715861.new_table", function(err, result, fields){
-        if(err)throw err;
-        res.send(result);
+app.get("/todos-los-usuarios", (req, res) => {
+    conexion.connect(function (err) {
+        if (err) throw err;
+        conexion.query("SELECT * FROM sql10715861.new_table", function (err, result, fields) {
+            if (err) throw err;
+            res.send(result);
+        })
     })
+
 })
