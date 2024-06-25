@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+import { registerBD } from './controller/userController.js';
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,7 +36,7 @@ app.get('/', (req, res) => {
 
 const user = require('./controller/userController');
 app.use("/registro-usuario", user.registerBD);
- app.use('/login', user.login);
+ //app.use('/login', user.login);
 
 
 const PORT = 3001;
@@ -44,15 +45,17 @@ app.listen(PORT, () => {
     console.log('servidor corriendo en el puerto', PORT);
 });
 
-const conexion = require('./configBD/configBD.js')
+const connection = require('./configBD/configBD.js');
 
 app.get("/todos-los-usuarios", (req, res) => {
-    conexion.connect(function (err) {
-        if (err) throw err;
-        conexion.query("SELECT * FROM sql10715861.new_table", function (err, result, fields) {
-            if (err) throw err;
-            res.send(result);
-        })
-    })
-
-})
+  const sql = "SELECT * FROM new_table";
+  
+  connection.query(sql, function (err, result, fields) {
+    if (err) {
+      console.error("Error al obtener usuarios:", err);
+      res.status(500).send("Error al obtener usuarios");
+    } else {
+      res.send(result);
+    }
+  });
+});
