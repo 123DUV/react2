@@ -3,7 +3,8 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-import { registerBD } from './controller/userController.js';
+
+
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
