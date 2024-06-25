@@ -164,6 +164,7 @@ export default function Registro() {
         //     },
         //     body: JSON.stringify(values)
         // })
+        console.log(`${URL}/registro-usuario`)
         fetch(`${URL}/registro-usuario`, {
             method: 'POST',
             headers: {

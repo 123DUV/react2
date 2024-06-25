@@ -113,12 +113,12 @@ const controller = {
                     fecha_creacion: new Date(),
                 };
 
-                // Verificar si el usuario ya existe en JSONBin
+             
                 if (result.data.record.some(x => x.email === req.body.email)) {
                     return res.status(400).send("Usuario ya existe en la Base de Datos");
                 }
 
-                // Guardar en JSONBin
+               
                 result.data.record.push(usuarioNuevo);
                 axios.put("https://api.jsonbin.io/v3/b/6654e46bad19ca34f8701ca7", result.data.record, {
                     headers: {
@@ -128,8 +128,8 @@ const controller = {
                 })
                 .then(response => {
                     if (response.status === 200) {
-                        // Guardar en MySQL
-                        const sql = 'INSERT INTO new_table (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento, deptoResidencia, municipioResidencia, password, fecha_creacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+                       console.log(response)
+                        const sql = 'INSERT INTO new_table (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento, deptoResidencia, municipioResidencia, password ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
                         const values = [
                             usuarioNuevo.identificacion,
                             usuarioNuevo.nombre,
@@ -141,7 +141,7 @@ const controller = {
                             usuarioNuevo.deptoResidencia,
                             usuarioNuevo.municipioResidencia,
                             usuarioNuevo.password,
-                            usuarioNuevo.fecha_creacion,
+                            
                         ];
 
                         connection.query(sql, values, (error, results) => {
