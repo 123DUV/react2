@@ -188,5 +188,5 @@ const controller = {
   })
 }
 }
-module.exports = register.BD;
+
 module.exports = controller;
