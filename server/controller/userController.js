@@ -84,6 +84,8 @@ const express = require('express');
 const app = express();
 const axios = require('axios');
 const cors = require('cors');
+const connection = require('../configBD/configBD');
+
 app.use(cors());
 
 const controller = {
@@ -157,6 +159,18 @@ const controller = {
             })
         })
   
+    },
+    registerBD: function(req, res) {
+      const{identificacion, nombres, apellidos, email, direccion, telefono, fechaDeNacimiento, deptoResidencia, municipioResidencia, password} = JSON.parse(JSON.stringify(req.body))
+
+      try{
+        const sql = "INSERT INTO sql10715861.new_table (identificacion, nombre, apellido, email, direccion, telefono, fechaDeNacimiento, deptoResidencia, municipioResidencia, password)" 
+        connection.execute(sql, {identificacion, nombres, apellidos, email, direccion, telefono, fechaDeNacimiento, deptoResidencia, municipioResidencia, password})
+        res.status(200).send("registro exitoso")
+      }
+      catch{
+        res.status(500).send("error en registro")
+      }
     }
   }
   module.exports = controller;
