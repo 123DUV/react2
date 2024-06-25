@@ -80,12 +80,7 @@
 
 
 
-const express = require('express');
-    const app = express();
-    const axios = require('axios');
-    const cors = require('cors');
-    app.use(cors());
-    const mysql = require('mysql2');
+const axios = require('axios');
 const connection = require('../configBD/configBD.js');
 
 const controller = {
@@ -111,14 +106,10 @@ const controller = {
                     email: req.body.email,
                     direccion: req.body.direccion,
                     telefono: req.body.telefono,
-                  
                     fechaNacimiento: req.body.fechaNacimiento,
-                    deptoResidencia:req.body.deptoResidencia,
-                    municipioResidencia:req.body.municipioResidencia,
-                    
+                    deptoResidencia: req.body.deptoResidencia,
+                    municipioResidencia: req.body.municipioResidencia,
                     password: req.body.password,
-                    estado: "activo",
-                    rol: "Usuario",
                     fecha_creacion: new Date(),
                 };
 
@@ -138,9 +129,9 @@ const controller = {
                 .then(response => {
                     if (response.status === 200) {
                         // Guardar en MySQL
-                        const sql = 'INSERT INTO new_table (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento, deptoResidencia, municipioResidencia, password,  fecha_creacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ?)';
+                        const sql = 'INSERT INTO new_table (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento, deptoResidencia, municipioResidencia, password, fecha_creacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
                         const values = [
-                          usuarioNuevo.identificacion,
+                            usuarioNuevo.identificacion,
                             usuarioNuevo.nombre,
                             usuarioNuevo.apellidos,
                             usuarioNuevo.email,
@@ -156,7 +147,7 @@ const controller = {
                         connection.query(sql, values, (error, results) => {
                             if (error) {
                                 console.error("Error al insertar en MySQL:", error);
-                                return res.status(500).send("Error interno al registrar usuario");
+                                return res.status(500).send("Error interno al registrar usuario en MySQL");
                             }
                             console.log("Usuario registrado en MySQL correctamente");
                             res.status(200).send('Usuario registrado correctamente');
@@ -167,12 +158,12 @@ const controller = {
                 })
                 .catch(error => {
                     console.error("Error al actualizar en JSONBin:", error);
-                    res.status(500).send("Error interno al registrar usuario");
+                    res.status(500).send("Error interno al actualizar en JSONBin");
                 });
             })
             .catch(error => {
                 console.error("Error al consultar JSONBin:", error);
-                res.status(500).send("Error interno al registrar usuario");
+                res.status(500).send("Error interno al consultar JSONBin");
             });
     }
 };
