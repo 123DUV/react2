@@ -8,7 +8,7 @@ export default function GoogleOAuth() {
     const cookies = new Cookies()
   return (
     <div>
-        <GoogleOAuthProvider clientId='633562319440-uco8t9cu9rdu5ak5j7ugc7alrvc6oq8s.apps.googleusercontent.com'>
+        <GoogleOAuthProvider clientId='240830551668-j5lqk4d6jrrto3pfrkac3bl1up8l7pe2.apps.googleusercontent.com'>
             <GoogleLogin
             onSuccess={credentialResponse =>{
                 const credentialResponseDecode = jwtDecode(credentialResponse.credential)
