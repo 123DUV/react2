@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors());
-
+const conexion = require('./configBD/configBD.js')
 
 
 app.get('/', (req, res) => {
@@ -44,7 +44,7 @@ app.listen(PORT, () => {
     console.log('servidor corriendo en el puerto', PORT);
 });
 
-const conexion = require('./configBD/configBD.js')
+
 
 app.get("/todos-los-usuarios", (req, res) => {
     conexion.connect(function (err) {

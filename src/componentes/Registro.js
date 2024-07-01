@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Swal from 'sweetalert2';
-import colombiaData from './colombia'; // Importa el archivo colombia.js
+import colombiaData from './colombia'; 
 
 export default function Registro() {
-    let URL = process.env.REACT_APP_ENVIRONMENT;
-    console.log('Environment URL:', URL); // Verifica la URL aquí
-    console.log('Process Env:', process.env); // Imprime todas las variables de entorno
+    let URI=process.env.REACT_APP_ENVIRONMENT;
+    console.log('Environment URL:', URL); 
+    console.log('Process Env:', process.env); 
 
     const [identificacionError, setIdentificacionError] = useState(false);
     const [nomError, setNomError] = useState(false);
@@ -151,8 +151,8 @@ export default function Registro() {
             return;
         }
 
-        console.log(`${URL}/registro-usuario`);
-        fetch(`${URL}/registro-usuario`, {
+        console.log(`${URI}/registro-usuario`);
+        fetch(`${URI}/registro-usuario`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

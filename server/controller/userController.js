@@ -129,20 +129,21 @@ const controller = {
                 .then(response => {
                     if (response.status === 200) {
                        console.log(response)
+                       const values = [
+                        usuarioNuevo.identificacion,
+                        usuarioNuevo.nombre,
+                        usuarioNuevo.apellidos,
+                        usuarioNuevo.email,
+                        usuarioNuevo.direccion,
+                        usuarioNuevo.telefono,
+                        usuarioNuevo.fechaNacimiento,
+                        usuarioNuevo.deptoResidencia,
+                        usuarioNuevo.municipioResidencia,
+                        usuarioNuevo.password,
+                        
+                    ];
                         const sql = 'INSERT INTO new_table (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento, deptoResidencia, municipioResidencia, password ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-                        const values = [
-                            usuarioNuevo.identificacion,
-                            usuarioNuevo.nombre,
-                            usuarioNuevo.apellidos,
-                            usuarioNuevo.email,
-                            usuarioNuevo.direccion,
-                            usuarioNuevo.telefono,
-                            usuarioNuevo.fechaNacimiento,
-                            usuarioNuevo.deptoResidencia,
-                            usuarioNuevo.municipioResidencia,
-                            usuarioNuevo.password,
-                            
-                        ];
+                        
 
                         connection.query(sql, values, (error, results) => {
                             if (error) {
