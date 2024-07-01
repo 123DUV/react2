@@ -49,7 +49,7 @@ const conexion = require('./configBD/configBD.js')
 app.get("/todos-los-usuarios", (req, res) => {
     conexion.connect(function (err) {
         if (err) throw err;
-        conexion.query("SELECT * FROM sql10715861.new_table", function (err, result, fields) {
+        conexion.query("SELECT * FROM sql10717270.new_table", function (err, result, fields) {
             if (err) throw err;
             res.send(result);
         })

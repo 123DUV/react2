@@ -6,7 +6,10 @@ import Swal from 'sweetalert2';
 import colombiaData from './colombia'; // Importa el archivo colombia.js
 
 export default function Registro() {
-    let URL =process.env.REACT_APP_ENVIRONMENT
+    let URL = process.env.REACT_APP_ENVIRONMENT;
+    console.log('Environment URL:', URL); // Verifica la URL aquí
+    console.log('Process Env:', process.env); // Imprime todas las variables de entorno
+
     const [identificacionError, setIdentificacionError] = useState(false);
     const [nomError, setNomError] = useState(false);
     const [apellidoError, setApellidoError] = useState(false);
@@ -70,6 +73,7 @@ export default function Registro() {
         setPassComparacion(false);
         setPasswordErrorRepeat(false);
     }
+
     const [values, setValues] = useState({
         identificacion: "",
         nombres: "",
@@ -82,124 +86,104 @@ export default function Registro() {
         fechaNacimiento: "",
         password: "",
         passRepeat: ""
+    });
+    console.log(values);
 
-        
-    })
-    console.log(values)
-
-    const handleChange = (e) => { //cuando se cambie de Input entonces se guarda la información en la variables.
-
-        const { name, value } = e.target
+    const handleChange = (e) => {
+        const { name, value } = e.target;
         const newValues = {
             ...values,
             departamento: departamento,
             ciudad: ciudad,
             [name]: value,
-        }
-        setValues(newValues)
-        
-    }
+        };
+        setValues(newValues);
+    };
+
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        // console.log(departamento);
-        // console.log(ciudad);
-
-        let validPassword = /^(?=,*[A-Z]).{8,}$/  //Expersión regular para: Mínimo 8 caracteres de longitud. Almenos una letra mayúscula. Almenos una letra minúscula. Almenos un número. Almenos un caracter especial. https://uibakery.io/regex-library/password
-        let validEmail = /^\w+([.-_+]?\w+)@\w+([.-]?\w+)(\.\w{2,10})+$/; //Expresión regular para validar email, es decir, que el email ingresado tenga el formato correcto de una dirección de correo electrónico
-
-
+        let validPassword = /^(?=.*[A-Z]).{8,}$/;
+        let validEmail = /^\w+([.-_+]?\w+)@\w+([.-]?\w+)(\.\w{2,10})+$/;
 
         if (values.identificacion.length < 5 || values.identificacion.length > 10 || values.identificacion.length === 0) {
-            setIdentificacionError(true)
+            setIdentificacionError(true);
             return;
         }
-        if (values.nombres.length < 3 || values.nombres.length === 0) { //El método trim( ) elimina los espacios en blanco en ambos extremos del string.        
-            setNomError(true)
+        if (values.nombres.length < 3 || values.nombres.length === 0) {
+            setNomError(true);
             return;
         }
         if (values.apellidos.length < 3 || values.apellidos.length === 0) {
-            setApellidoError(true)
+            setApellidoError(true);
             return;
         }
         if (values.email.length === 0) {
-            setErrorEmailVacio(true)
+            setErrorEmailVacio(true);
             return;
         }
-
         if (!validEmail.test(values.email)) {
-            setEmailError(true)
+            setEmailError(true);
             return;
         }
         if (values.direccion.length < 15) {
-            setDireccionError(true)
+            setDireccionError(true);
             return;
         }
         if (values.telefono.length < 10 || values.telefono.length > 10) {
-            setTelefonoError(true)
+            setTelefonoError(true);
             return;
         }
         if (values.fechaNacimiento === "") {
-            setFechaNacimientoError(true)
+            setFechaNacimientoError(true);
             return;
         }
         if (!validPassword.test(values.password)) {
-            setPasswordError(true)
+            setPasswordError(true);
             return;
         }
         if (values.passRepeat.length === 0) {
-            setPasswordErrorRepeat(true)
+            setPasswordErrorRepeat(true);
             return;
         }
-        if (values.password != values.passRepeat) {
-            setPassComparacion(true)
+        if (values.password !== values.passRepeat) {
+            setPassComparacion(true);
             return;
         }
 
-
-        // fetch('http://localhost:3001/registro-usuario', {
-        //     method: 'POST',
-        //     headers: {
-        //         "Content-Type": "application/json", 'Accept': 'application/json'
-        //     },
-        //     body: JSON.stringify(values)
-        // })
-        console.log(`${URL}/registro-usuario`)
+        console.log(`${URL}/registro-usuario`);
         fetch(`${URL}/registro-usuario`, {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json", 'Accept': 'application/json'
+                "Content-Type": "application/json",
+                'Accept': 'application/json'
             },
             body: JSON.stringify(values)
         })
             .then(response => {
                 if (response.status === 200) {
-                    // alert("Usuario creado con éxito")
                     Swal.fire({
                         title: "Usuario creado con éxito",
                         icon: "success"
-                    })
-                    form.current.reset()
-                    window.location.hash = '/login'
-
+                    });
+                    form.current.reset();
+                    window.location.hash = '/login';
                 }
                 if (response.status === 400) {
-                    //alert(" + response.status)
                     Swal.fire({
                         title: "No fue posible crear el usuario porque ya existe el correo ingresado " + values.email,
                         icon: "warning"
-                    })
-
+                    });
                 }
             })
             .catch((error) => {
-                //alert("No fue posible finalizar el proceso de registro por un error " + error)
                 Swal.fire({
                     title: "No fue posible finalizar el proceso de registro por un error interno del servidor ",
                     icon: "error"
-                })
-            })
-    }
+                });
+            });
+    };
+
     return (
         <div className='container'>
             <Header />
