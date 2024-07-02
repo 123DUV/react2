@@ -85,7 +85,7 @@ const connection = require('../configBD/configBD.js');
 
 const controller = {
     register: function (req, res) {
-        let config = {
+        const config = {
             method: "GET",
             maxBodyLength: Infinity,
             url: 'https://api.jsonbin.io/v3/b/6654e46bad19ca34f8701ca7',
@@ -97,9 +97,11 @@ const controller = {
 
         axios(config)
             .then(result => {
-                let id = result.data.record.length + 1
+                const records = Array.isArray(result.data.record) ? result.data.record : [];
+                const newId = records.length + 1;
+
                 const usuarioNuevo = {
-                    id: id,
+                    id: newId,
                     identificacion: req.body.identificacion,
                     nombre: req.body.nombres,
                     apellidos: req.body.apellidos,
@@ -107,43 +109,35 @@ const controller = {
                     direccion: req.body.direccion,
                     telefono: req.body.telefono,
                     fechaNacimiento: req.body.fechaNacimiento,
-                    deptoResidencia: req.body.deptoResidencia,
-                    municipioResidencia: req.body.municipioResidencia,
+                    
                     password: req.body.password,
                     fecha_creacion: new Date(),
                 };
 
-             
-                if (result.data.record.some(x => x.email === req.body.email)) {
+                if (records.some(x => x.email === req.body.email)) {
                     return res.status(400).send("Usuario ya existe en la Base de Datos");
                 }
 
-               
-                result.data.record.push(usuarioNuevo);
-                axios.put("https://api.jsonbin.io/v3/b/6654e46bad19ca34f8701ca7", result.data.record, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-Master-Key": "$2a$10$WQluOHcKUZmklnCjHnmOfOant.9JMsOvhj/GMzUvrYQOVf.VDHkhO"
-                    }
+                records.push(usuarioNuevo);
+
+                axios.put(config.url, { record: records }, {
+                    headers: config.headers
                 })
                 .then(response => {
                     if (response.status === 200) {
-                       console.log(response)
-                       const values = [
-                        usuarioNuevo.identificacion,
-                        usuarioNuevo.nombre,
-                        usuarioNuevo.apellidos,
-                        usuarioNuevo.email,
-                        usuarioNuevo.direccion,
-                        usuarioNuevo.telefono,
-                        usuarioNuevo.fechaNacimiento,
-                        usuarioNuevo.deptoResidencia,
-                        usuarioNuevo.municipioResidencia,
-                        usuarioNuevo.password,
-                        
-                    ];
-                        const sql = 'INSERT INTO new_table (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento, deptoResidencia, municipioResidencia, password ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-                        
+                        const values = [
+                            usuarioNuevo.identificacion,
+                            usuarioNuevo.nombre,
+                            usuarioNuevo.apellidos,
+                            usuarioNuevo.email,
+                            usuarioNuevo.direccion,
+                            usuarioNuevo.telefono,
+                            usuarioNuevo.fechaNacimiento,
+                            
+                            usuarioNuevo.password,
+                        ];
+
+                        const sql = 'INSERT INTO new_table (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento,  password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
 
                         connection.query(sql, values, (error, results) => {
                             if (error) {
@@ -170,4 +164,3 @@ const controller = {
 };
 
 module.exports = controller;
-

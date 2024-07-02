@@ -1,18 +1,19 @@
-const mysql= require('mysql2');
+const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-    host: "sql10.freesqldatabase.com",
-    user: "sql10717270",
-    password: "qhwkh9GJXp",
-    database: "sql10717270",
-    port: 3306,
-})
+    host: process.env.DB_HOST || "sql10.freesqldatabase.com",
+    user: process.env.DB_USER || "sql10717270",
+    password: process.env.DB_PASSWORD || "qhwkh9GJXp",
+    database: process.env.DB_NAME || "sql10717270",
+    port: process.env.DB_PORT || 3306,
+});
 
-connection.connect((error)=>{
-    if(!error)
-        {console.log("Conexion exitosa")}
-    else{
-        console.log("Conexion fallida")
+connection.connect((error) => {
+    if (!error) {
+        console.log("Conexión exitosa");
+    } else {
+        console.error("Conexión fallida:", error);
     }
-})
-module.exports = connection
+});
+
+module.exports = connection;

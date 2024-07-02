@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import colombiaData from './colombia'; 
 
 export default function Registro() {
-    let URI=process.env.REACT_APP_ENVIRONMENT;
+    let URL = process.env.REACT_APP_ENVIRONMENT || 'http://localhost:3001';
     console.log('Environment URL:', URL); 
     console.log('Process Env:', process.env); 
 
@@ -151,8 +151,8 @@ export default function Registro() {
             return;
         }
 
-        console.log(`${URI}/registro-usuario`);
-        fetch(`${URI}/registro-usuario`, {
+        console.log(`${URL}/registro-usuario`);
+        fetch(`${URL}/registro-usuario`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
