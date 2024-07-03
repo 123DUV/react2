@@ -1,12 +1,11 @@
-import com from './com.png';
-import bsl from './bsl2.png';
+import cmp from './cmp.jpg';
+import ss1 from './ss1.jpg';
 import itera from './itera3.jpg';
 import makeup from './makeup.jpg';
 import seus from './seus.jpg';
 import solas from './solas.jpg';
 import sildurs from './sildurs.png';
 import mellow from './mellow.webp';
-
 import photon from './photon.jpg';
 import lymbo from './lymbo.webp';
 import Default from './Default.jpg';
@@ -17,7 +16,7 @@ export default [
         title: "Complementary Shaders",
         plataforma: "pc",
         descripcion: "Shader Minecraft",
-        image: com,
+        image: cmp,
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
@@ -27,7 +26,7 @@ export default [
         title: "BSL Shaders",
         plataforma: "pc",
         descripcion: "Shader Minecraft",
-        image: bsl,
+        image: ss1,
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
