@@ -1,7 +1,7 @@
 .logo{
     width: 5%;
     margin: 15px;
-    background-color: cyan; 
+    background-color: black; 
     
 }
 .contenedor{
@@ -17,10 +17,10 @@
 
 }
 .navbar-nav .nav-item svg {
-    fill:cyan; /* Cambia el color de relleno de los iconos a blanco */
+    fill: black; /* Cambia el color de relleno de los iconos a blanco */
 }
 .navbar-nav .nav-item .nav-link {
-    color: cyan; /* Cambia el color del texto de los enlaces a blanco */
+    color: black; /* Cambia el color del texto de los enlaces a blanco */
 }
 
 

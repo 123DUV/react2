@@ -34,7 +34,7 @@ export default function Cards(props) {
             class="btn btn-primary"
             onClick={addToCart}>Agregar</button>
 
-            <button type="button" class="btn btn-outline-primary">Comprar</button>
+            <button type="button" class="btn btn-outline-primary">Ver Mas</button>
         </div>
       
     </div>

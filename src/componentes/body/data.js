@@ -1,15 +1,14 @@
-import com from './com.png';
-import bsl from './bsl2.png';
+import cmp from './cmp.jpg';
+import ss1 from './ss1.jpg';
 import itera from './itera3.jpg';
-import gowr from './gowr.jpg';
-import milesmorales from './milesmorales.jpg';
-import mk1 from './mk1.jpg';
-import reddead from './reddead.jpg';
-import spiderman from './spiderman.jpg';
-import st from './st.jpg';
-import tlou from './tlou.jpg';
-import tlou2 from './tlou2.jpg';
-import uncharted from './uncharted.jpg';
+import makeup from './makeup.jpg';
+import seus from './seus.jpg';
+import solas from './solas.jpg';
+import sildurs from './sildurs.png';
+import mellow from './mellow.webp';
+import photon from './photon.jpg';
+import lymbo from './lymbo.webp';
+import Default from './Default.jpg';
 
 export default [
     {
@@ -17,7 +16,7 @@ export default [
         title: "Complementary Shaders",
         plataforma: "pc",
         descripcion: "Shader Minecraft",
-        image: com,
+        image: cmp,
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
@@ -27,7 +26,7 @@ export default [
         title: "BSL Shaders",
         plataforma: "pc",
         descripcion: "Shader Minecraft",
-        image: bsl,
+        image: ss1,
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
@@ -44,80 +43,80 @@ export default [
     },
     {
         id: 4,
-        title: "God OF War Remastered",
-        plataforma: "ps4",
-        descripcion: "Juego para ps4",
-        image: gowr,
+        title: "MakeUp Shaders",
+        plataforma: "pc",
+        descripcion: "Shader Minecraft",
+        image: makeup,
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
     },
     {
         id: 5,
-        title: "Marvel Spider-man Miles Morales",
-        plataforma: "ps4",
-        descripcion: "Juego para ps4",
-        image: milesmorales,
+        title: "Seus Shaders",
+        plataforma: "pc",
+        descripcion: "Shader Minecraft",
+        image: seus,
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
     },
     {
         id: 6,
-        title: "Mortal Kombat 1",
-        plataforma: "ps5",
-        descripcion: "Juego para ps5",
-        image: mk1,
+        title: "Solas Shaders",
+        plataforma: "pc",
+        descripcion: "Shader Minecraft",
+        image: solas,
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
     },
     {
         id: 7,
-        title: "Red Dead Redemption 2",
-        plataforma: "ps4",
-        descripcion: "Juego para ps4",
-        image: reddead,
+        title: "Sildurs Shaders",
+        plataforma: "pc",
+        descripcion: "Shader Minecraft",
+        image: sildurs,
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
     },
     {
         id: 8,
-        title: "Street Fighter V",
-        plataforma: "ps4",
-        descripcion: "Juego para ps4",
-        image: st,
+        title: "Mellow Shaders",
+        plataforma: "pc",
+        descripcion: "Shader Minecraft",
+        image: mellow,
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
     },
     {
         id: 9,
-        title: "The Last Of Us Remasterizado",
-        plataforma: "ps4",
-        descripcion: "Juego para ps4",
-        image: tlou,
+        title: "Photon Shaders",
+        plataforma: "pc",
+        descripcion: "Shader Minecraft",
+        image: photon,
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
     },
     {
         id: 10,
-        title: "The Last Of Us Part II",
-        plataforma: "ps4",
-        descripcion: "Juego para ps4",
-        image: tlou2,
+        title: "Lymbo Shaders",
+        plataforma: "pc",
+        descripcion: "Shader Minecraft",
+        image: lymbo,
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
     },
     {
         id: 11,
-        title: "Uncharted 4",
-        plataforma: "ps4",
-        descripcion: "Juego para ps4",
-        image: uncharted,
+        title: "Default+ Shaders",
+        plataforma: "pc",
+        descripcion: "Shader Minecraft",
+        image: Default,
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,

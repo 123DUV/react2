@@ -31,23 +31,10 @@ export default function Header() {
                             </li>
                             <li className="nav-item">
                                 <ArticleIcon/>
-                                <a className="nav-link" href="#">Tutoriales</a>
+                                <a className="nav-link" href="https://www.youtube.com/@AsianHalfSquat">Tutoriales</a>
                             </li>
 
-                            <li className="nav-item">
-                                <ClearAllIcon/>
-                                <a className="nav-link disabled" aria-disabled="true">Referencias</a>
-                            </li>
-
-                            <li className="nav-item">
-                                <FilePresentIcon/>
-                                <a className="nav-link disabled" aria-disabled="true">Recursos</a>
-                            </li>
-
-                            <li className="nav-item">
-                                <ContactsIcon/>
-                                <a className="nav-link disabled" aria-disabled="true">Contacto</a>
-                            </li>
+                            
                             <Link to='/registro'>
                             <li className="nav-item">
                                 <PersonAddIcon/>

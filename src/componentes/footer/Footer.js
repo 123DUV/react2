@@ -43,36 +43,25 @@ export default function Footer() {
 
         <div class="row mt-3">
 
-            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-                <h6 class="text-uppercase fw-bold mb-4">
-                    <i class="fas fa-gem me-3"></i>Company name
-                </h6>
-                <p>
-                    Here you can use rows and columns to organize your footer content. Lorem ipsum
-                    dolor sit amet, consectetur adipisicing elit.
-                </p>
-            </div>
+            
 
 
 
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
                 <h6 class="text-uppercase fw-bold mb-4">
-                    Products
+                    Productos
                 </h6>
                 <p>
-                    <a href="#!" class="text-reset">Angular</a>
+                    <a href="#!" class="text-reset">Guias</a>
                 </p>
                 <p>
-                    <a href="#!" class="text-reset">React</a>
+                    <a href="#!" class="text-reset">Tutoriales</a>
                 </p>
                 <p>
-                    <a href="#!" class="text-reset">Vue</a>
+                    <a href="#!" class="text-reset">Recomendaciones</a>
                 </p>
-                <p>
-                    <a href="#!" class="text-reset">Laravel</a>
-                </p>
+                
             </div>
 
 
@@ -80,20 +69,18 @@ export default function Footer() {
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
                 <h6 class="text-uppercase fw-bold mb-4">
-                    Useful links
+                    Links
                 </h6>
                 <p>
-                    <a href="#!" class="text-reset">Pricing</a>
+                    <a href="https://zonacraft.net/mc/shaders/" class="text-reset">More shaders</a>
                 </p>
                 <p>
-                    <a href="#!" class="text-reset">Settings</a>
+                    <a href="https://www.youtube.com/@AsianHalfSquat" class="text-reset">Reviews</a>
                 </p>
                 <p>
-                    <a href="#!" class="text-reset">Orders</a>
+                    <a href="https://www.minecraft.net/en-us" class="text-reset">Minecraft Oficial Site</a>
                 </p>
-                <p>
-                    <a href="#!" class="text-reset">Help</a>
-                </p>
+                
             </div>
 
 
@@ -104,7 +91,7 @@ export default function Footer() {
                 <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
                 <p>
                     <i class="fas fa-envelope me-3"></i>
-                    info@example.com
+                    correo@gmail.com
                 </p>
                 <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
                 <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
@@ -119,7 +106,7 @@ export default function Footer() {
 
 <div class="text-center p-4" >
     © 2021 Copyright:
-    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  
 </div>
 
 </footer>
