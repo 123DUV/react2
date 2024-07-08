@@ -137,7 +137,7 @@ const controller = {
                             usuarioNuevo.password,
                         ];
 
-                        const sql = 'INSERT INTO new_table (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento,  password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+                        const sql = 'INSERT INTO bdreactlocal (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento,  password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
 
                         connection.query(sql, values, (error, results) => {
                             if (error) {
@@ -160,7 +160,32 @@ const controller = {
                 console.error("Error al consultar JSONBin:", error);
                 res.status(500).send("Error interno al consultar JSONBin");
             });
-    }
+    },
+    login: async function(req, res){
+                try {
+                    const userData = await fs.readFile(userFilePath, "utf-8");
+                    const users = JSON.parse(userData);
+        
+                    for (x of users) {
+                        if(
+                            x.email === req.body.email &&
+                            x.password === req.body.password &&
+                            x.rol === req.body.rol
+                        ){
+                            return res.json({
+                                nombres: x.nombres,
+                                apellidos: x.apellidos,
+                                email: x.email,
+                            });
+                        }
+        
+                        }
+                        res.json({ title: "error"})
+                } catch (error){
+                    console.error("Error al procesar el registro",error);
+                    res.status(500).send("Error interno del servidor");
+                }
+            }
 };
 
 module.exports = controller;

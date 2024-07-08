@@ -1,10 +1,10 @@
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-    host: process.env.DB_HOST || "sql10.freesqldatabase.com",
-    user: process.env.DB_USER || "sql10717270",
-    password: process.env.DB_PASSWORD || "qhwkh9GJXp",
-    database: process.env.DB_NAME || "sql10717270",
+    host: process.env.DB_HOST || "127.0.0.1",
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD || "",
+    database: process.env.DB_NAME || "bdreactlocal",
     port: process.env.DB_PORT || 3306,
 });
 
