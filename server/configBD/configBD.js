@@ -7,10 +7,7 @@ const connection = mysql.createConnection({
     password: process.env.DB_PASSWORD || "",
     database: process.env.DB_NAME || "bdreactlocal",
 
-    // host: process.env.DB_HOST || "sql10.freesqldatabase.com",
-    // user: process.env.DB_USER || " 	sql10717569",
-    // password: process.env.DB_PASSWORD || "PVRtavv1wh",
-    // database: process.env.DB_NAME || "sql10717569",
+   
 
     port: process.env.DB_PORT || 3306,
 });
