@@ -108,10 +108,8 @@ const controller = {
                     email: req.body.email,
                     direccion: req.body.direccion,
                     telefono: req.body.telefono,
-                    fechaNacimiento: req.body.fechaNacimiento,
-                    
-                    password: req.body.password,
-                    fecha_creacion: new Date(),
+                    fechaNacimiento: req.body.fechaNacimiento,                    
+                    password: req.body.password,                   
                 };
 
                 if (records.some(x => x.email === req.body.email)) {
@@ -133,11 +131,10 @@ const controller = {
                             usuarioNuevo.direccion,
                             usuarioNuevo.telefono,
                             usuarioNuevo.fechaNacimiento,
-                            
                             usuarioNuevo.password,
                         ];
 
-                        const sql = 'INSERT INTO bdreactlocal (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento,  password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+                        const sql = 'INSERT INTO bdreactlocal.usuarios (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento,  password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
 
                         connection.query(sql, values, (error, results) => {
                             if (error) {

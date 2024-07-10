@@ -20,6 +20,7 @@ export default [
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
+        url:'https://www.complementary.dev/shaders/',
     },
     {
         id: 2,
@@ -30,6 +31,7 @@ export default [
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
+        url:'https://bitslablab.com/bslshaders/',
     },
     {
         id: 3,
@@ -40,6 +42,7 @@ export default [
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
+        url:'https://www.reddit.com/r/Minecraft/comments/19acyhb/minecraft_shader_iteration_t300/?rdt=43529',
     },
     {
         id: 4,
@@ -50,6 +53,7 @@ export default [
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
+        url:'https://zonacraft.net/makeup-shaders/',
     },
     {
         id: 5,
@@ -60,6 +64,7 @@ export default [
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
+        url:'https://www.sonicether.com/seus/',
     },
     {
         id: 6,
@@ -70,6 +75,7 @@ export default [
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
+        url:'https://zonacraft.net/solas-shaders-para-minecraft/',
     },
     {
         id: 7,
@@ -80,6 +86,7 @@ export default [
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
+        url:'https://texture-packs.com/shaders/sildurs/',
     },
     {
         id: 8,
@@ -90,6 +97,7 @@ export default [
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
+        url:'https://zonacraft.net/mellow-shaders/',
     },
     {
         id: 9,
@@ -100,6 +108,7 @@ export default [
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
+        url:'https://zonacraft.net/photon-shaders-para-minecraft/',
     },
     {
         id: 10,
@@ -110,6 +119,7 @@ export default [
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
+        url:'https://zonacraft.net/lymbo-shaders/',
     },
     {
         id: 11,
@@ -120,5 +130,6 @@ export default [
         precio: 1000,
         precioCarrito:1000,
         cantidad:1,
+        url:'https://zonacraft.net/stereos-default-shaders/',
     },
 ]
