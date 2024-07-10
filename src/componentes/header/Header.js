@@ -59,8 +59,6 @@ export default function Header() {
                         <div className='cssCarrito'>
                             <Link to='/carrito'>
                                 <CartIcon />
-
-
                             </Link>
                         </div>
 
