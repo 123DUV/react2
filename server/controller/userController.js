@@ -133,8 +133,8 @@ const controller = {
                             usuarioNuevo.fechaNacimiento,
                             usuarioNuevo.password,
                         ];
-
-                        const sql = 'INSERT INTO bdreactlocal.usuarios (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento,  password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+                                                  //bdreactlocal.usuarios
+                        const sql = 'INSERT INTO railway.new_table (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento,  password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
 
                         connection.query(sql, values, (error, results) => {
                             if (error) {

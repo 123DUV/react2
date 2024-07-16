@@ -49,7 +49,8 @@ app.listen(PORT, () => {
 app.get("/todos-los-usuarios", (req, res) => {
     conexion.connect(function (err) {
         if (err) throw err;
-        conexion.query("SELECT * FROM bdreactlocal", function (err, result, fields) {
+                                      //bdreactlocal
+        conexion.query("SELECT * FROM railway", function (err, result, fields) {
             if (err) throw err;
             res.send(result);
         })
