@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 export default function Footer() {
   return (
     <div>
@@ -8,30 +8,28 @@ export default function Footer() {
 <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
 
     <div class="me-5 d-none d-lg-block">
-        <span>Get connected with us on social networks:</span>
+        <h5>Conectate con nosotros en nuestras redes:</h5>
     </div>
 
 
 
     <div>
-        <a href="" class="me-4 text-reset">
+        <a href="http://facebook.com" class="me-4 text-reset" target='_blank'>
         <i class="bi bi-facebook"></i>
         </a>
-        <a href="" class="me-4 text-reset">
+
+        <a href="http://twitter.com" class="me-4 text-reset" target='_blank'>
         <i class="bi bi-twitter-x"></i>
         </a>
-        <a href="" class="me-4 text-reset">
-        <i class="bi bi-google"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
+
+        <a href="http://linkedin.com" class="me-4 text-reset" target='_blank'>
         <i class="bi bi-linkedin"></i>
         </a>
-        <a href="" class="me-4 text-reset">
+
+        <a href="http://github.com" class="me-4 text-reset" target='_blank'>
         <i class="bi bi-github"></i>
         </a>
-        <a href="" class="me-4 text-reset">
-            
-        </a>
+        
     </div>
 
 </section>
@@ -53,13 +51,13 @@ export default function Footer() {
                     Productos
                 </h6>
                 <p>
-                    <a href="#!" class="text-reset">Guias</a>
+                    <a href="#!" class="text-reset" target='_blank'>Guias</a>
                 </p>
                 <p>
-                    <a href="#!" class="text-reset">Tutoriales</a>
+                    <a href="#!" class="text-reset" target='_blank'>Tutoriales</a>
                 </p>
                 <p>
-                    <a href="#!" class="text-reset">Recomendaciones</a>
+                    <a href="#!" class="text-reset" target='_blank'>Recomendaciones</a>
                 </p>
                 
             </div>
@@ -72,13 +70,13 @@ export default function Footer() {
                     Links
                 </h6>
                 <p>
-                    <a href="https://zonacraft.net/mc/shaders/" class="text-reset">More shaders</a>
+                    <a href="https://zonacraft.net/mc/shaders/" class="text-reset" target="_blank">More shaders</a>
                 </p>
                 <p>
-                    <a href="https://www.youtube.com/@AsianHalfSquat" class="text-reset">Reviews</a>
+                    <a href="https://www.youtube.com/@AsianHalfSquat" class="text-reset" target="_blank">Reviews</a>
                 </p>
                 <p>
-                    <a href="https://www.minecraft.net/en-us" class="text-reset">Minecraft Oficial Site</a>
+                    <a href="https://www.minecraft.net/en-us" class="text-reset" target="_blank">Minecraft Oficial Site</a>
                 </p>
                 
             </div>
@@ -105,7 +103,7 @@ export default function Footer() {
 
 
 <div class="text-center p-4" >
-    © 2021 Copyright:
+    © 2024 Copyright:
   
 </div>
 

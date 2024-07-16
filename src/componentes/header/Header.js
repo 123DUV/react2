@@ -32,9 +32,9 @@ export default function Header() {
                                 <HomeIcon />
                                 <a className="nav-link active" aria-current="page" href="#">Inicio</a>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item px-3">
                                 <ArticleIcon />
-                                <a className="nav-link" href="https://www.youtube.com/@AsianHalfSquat">Tutoriales</a>
+                                <a className="nav-link " href="https://www.youtube.com/@AsianHalfSquat">Tutoriales</a>
                             </li>
 
 

@@ -10,8 +10,7 @@ import CartIcon from '../componentes/CartIcon';
 function Inicio() {
   return (
    <div>
-      <Header/>
-      
+      <Header/> 
       <Carrusel/>
       <CardList/>
       <Footer/>

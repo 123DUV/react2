@@ -27,7 +27,7 @@ export default function Cards(props) {
     })
   }
   function handleVerMasClick() {
-    window.location.href = props.items.url;
+    window.location.href = props.items.url;  
   }
 
 
