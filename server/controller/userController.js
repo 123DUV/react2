@@ -108,49 +108,62 @@ const controller = {
                     email: req.body.email,
                     direccion: req.body.direccion,
                     telefono: req.body.telefono,
-                    fechaNacimiento: req.body.fechaNacimiento,                    
-                    password: req.body.password,                   
+                    fechaNacimiento: req.body.fechaNacimiento,
+                    password: req.body.password,
                 };
 
                 if (records.some(x => x.email === req.body.email)) {
                     return res.status(400).send("Usuario ya existe en la Base de Datos");
                 }
 
-                records.push(usuarioNuevo);
-
-                axios.put(config.url, { record: records }, {
-                    headers: config.headers
-                })
-                .then(response => {
-                    if (response.status === 200) {
-                        const values = [
-                            usuarioNuevo.identificacion,
-                            usuarioNuevo.nombre,
-                            usuarioNuevo.apellidos,
-                            usuarioNuevo.email,
-                            usuarioNuevo.direccion,
-                            usuarioNuevo.telefono,
-                            usuarioNuevo.fechaNacimiento,
-                            usuarioNuevo.password,
-                        ];
-                                                  //bdreactlocal.usuarios
-                        const sql = 'INSERT INTO railway.new_table (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento,  password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-
-                        connection.query(sql, values, (error, results) => {
-                            if (error) {
-                                console.error("Error al insertar en MySQL:", error);
-                                return res.status(500).send("Error interno al registrar usuario en MySQL");
-                            }
-                            console.log("Usuario registrado en MySQL correctamente");
-                            res.status(200).send('Usuario registrado correctamente');
-                        });
-                    } else {
-                        res.status(400).send("No se pudo actualizar en JSONBin");
+                // Verificar identificación en MySQL antes de insertar el nuevo registro
+                const sqlCheck = 'SELECT identificacion FROM railway.new_table WHERE identificacion = ?';
+                connection.query(sqlCheck, [usuarioNuevo.identificacion], (error, results) => {
+                    if (error) {
+                        console.error("Error al verificar identificación en MySQL:", error);
+                        return res.status(500).send("Error interno al verificar identificación en MySQL");
                     }
-                })
-                .catch(error => {
-                    console.error("Error al actualizar en JSONBin:", error);
-                    res.status(500).send("Error interno al actualizar en JSONBin");
+
+                    if (results.length > 0) {
+                        return res.status(400).send("Identificación repetida");
+                    } else {
+                        // Insertar nuevo registro en JSONBin
+                        records.push(usuarioNuevo);
+
+                        axios.put(config.url, { record: records }, {
+                            headers: config.headers
+                        })
+                        .then(response => {
+                            if (response.status === 200) {
+                                const values = [
+                                    usuarioNuevo.identificacion,
+                                    usuarioNuevo.nombre,
+                                    usuarioNuevo.apellidos,
+                                    usuarioNuevo.email,
+                                    usuarioNuevo.direccion,
+                                    usuarioNuevo.telefono,
+                                    usuarioNuevo.fechaNacimiento,
+                                    usuarioNuevo.password,
+                                ];
+
+                                const sqlInsert = 'INSERT INTO railway.new_table (identificacion, nombre, apellidos, email, direccion, telefono, fechaNacimiento, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+                                connection.query(sqlInsert, values, (error, results) => {
+                                    if (error) {
+                                        console.error("Error al insertar en MySQL:", error);
+                                        return res.status(500).send("Error interno al registrar usuario en MySQL");
+                                    }
+                                    console.log("Usuario registrado en MySQL correctamente");
+                                    res.status(200).send('Usuario registrado correctamente');
+                                });
+                            } else {
+                                res.status(400).send("No se pudo actualizar en JSONBin");
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error al actualizar en JSONBin:", error);
+                            res.status(500).send("Error interno al actualizar en JSONBin");
+                        });
+                    }
                 });
             })
             .catch(error => {
@@ -158,31 +171,31 @@ const controller = {
                 res.status(500).send("Error interno al consultar JSONBin");
             });
     },
-    login: async function(req, res){
-                try {
-                    const userData = await fs.readFile(userFilePath, "utf-8");
-                    const users = JSON.parse(userData);
-        
-                    for (x of users) {
-                        if(
-                            x.email === req.body.email &&
-                            x.password === req.body.password &&
-                            x.rol === req.body.rol
-                        ){
-                            return res.json({
-                                nombres: x.nombres,
-                                apellidos: x.apellidos,
-                                email: x.email,
-                            });
-                        }
-        
-                        }
-                        res.json({ title: "error"})
-                } catch (error){
-                    console.error("Error al procesar el registro",error);
-                    res.status(500).send("Error interno del servidor");
+
+    login: async function(req, res) {
+        try {
+            const userData = await fs.readFile(userFilePath, "utf-8");
+            const users = JSON.parse(userData);
+
+            for (const x of users) {
+                if (
+                    x.email === req.body.email &&
+                    x.password === req.body.password &&
+                    x.rol === req.body.rol
+                ) {
+                    return res.json({
+                        nombres: x.nombres,
+                        apellidos: x.apellidos,
+                        email: x.email,
+                    });
                 }
             }
+            res.json({ title: "error" });
+        } catch (error) {
+            console.error("Error al procesar el registro", error);
+            res.status(500).send("Error interno del servidor");
+        }
+    }
 };
 
 module.exports = controller;

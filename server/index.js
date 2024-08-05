@@ -29,12 +29,16 @@ app.get('/', (req, res) => {
         })
 })
 
-
+app.use(cors({
+    origin: 'http://localhost:3000',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+}));
 
 
 
 const user = require('./controller/userController');
-app.use("/registro-usuario", user.register);
+app.use("/registro-usuario", upload.single("foto"),user.register);
  app.use('/login', user.login);
 
 
@@ -57,3 +61,17 @@ app.get("/todos-los-usuarios", (req, res) => {
     })
 
 })
+
+const path = require('path')
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, path.join(__dirname, './public/images'))
+    },
+    filename: function (req, file, cb){
+        cb(null, `${Date.now()}`)
+    }
+})
+
+const upload = multer({storage})

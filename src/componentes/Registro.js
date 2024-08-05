@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Swal from 'sweetalert2';
-import colombiaData from './colombia'; 
+import colombiaData from './colombia';
+import ImagenPerfilError from './body/error.png';
 
 export default function Registro() {
     let URL = process.env.REACT_APP_ENVIRONMENT || 'http://localhost:3001';
-    console.log('Environment URL:', URL); 
-    console.log('Process Env:', process.env); 
+    console.log('Environment URL:', URL);
+    console.log('Process Env:', process.env);
 
     const [identificacionError, setIdentificacionError] = useState(false);
     const [nomError, setNomError] = useState(false);
@@ -24,7 +25,9 @@ export default function Registro() {
     const [departamento, setDepartamento] = useState('');
     const [ciudad, setCiudad] = useState('');
     const [ciudades, setCiudades] = useState([]);
-
+    const [vistaPrevia, setVistaPrevia] = useState(null);
+    const [file, setFile] = useState(null);
+    const[imagenPerfil, setImagenPerfil] = useState(null);
     const form = useRef();
 
     useEffect(() => {
@@ -90,14 +93,23 @@ export default function Registro() {
     console.log(values);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        const newValues = {
-            ...values,
-            departamento: departamento,
-            ciudad: ciudad,
-            [name]: value,
-        };
-        setValues(newValues);
+        if (e.target.name === 'foto') {
+            const file = e.target.files ? e.target.files[0] : null
+            setValues({ ...values, [e.target.name]: file });
+            setFile(file)
+            
+        } else {
+            setValues({ ...values, [e.target.name]: e.target.value });
+        }
+
+        // const { name, value } = e.target;
+        // const newValues = {
+        //     ...values,
+        //     departamento: departamento,
+        //     ciudad: ciudad,
+        //     [name]: value,
+        // };
+        // setValues(newValues);
     };
 
     const handleSubmit = (e) => {
@@ -150,15 +162,24 @@ export default function Registro() {
             setPassComparacion(true);
             return;
         }
+        if (!file) {
+            setImagenPerfil(true); // Muestra el error si no hay imagen seleccionada
+            return;
+        }
 
         console.log(`${URL}/registro-usuario`);
+        console.log("hola")
+
+
+        const formData = new FormData();
+        console.log(formData);
+        for (const [key, value] of Object.entries(values)) {
+            formData.append(key, value);
+        }
+
         fetch(`${URL}/registro-usuario`, {
             method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(values)
+            body: formData
         })
             .then(response => {
                 if (response.status === 200) {
@@ -171,7 +192,7 @@ export default function Registro() {
                 }
                 if (response.status === 400) {
                     Swal.fire({
-                        title: "No fue posible crear el usuario porque ya existe el correo ingresado " + values.email,
+                        title: "No fue posible crear el usuario porque ya existe la cedula ingresada: " + values.identificacion,
                         icon: "warning"
                     });
                 }
@@ -272,19 +293,18 @@ export default function Registro() {
                                     </div>
 
                                     <div className="form-outline mb-4">
-                                        <label className="form-label" htmlFor="form3Example4cdg">Reepetir contraseña</label>
+                                        <label className="form-label" htmlFor="form3Example4cdg">Repetir contraseña</label>
                                         <input type="password" id="form3Example8cdg" className="form-control form-control-lg" name='passRepeat' onChange={handleChange} onClick={passRepeat} />
                                         {passComparacion ? <p style={{ color: 'red' }}>Las contraseñas ingresadas no coinciden</p> : ""}
                                         {passwordErrorRepeat ? <p style={{ color: 'red' }}>Este campo no puede quedar vacío.</p> : ""}
 
                                     </div>
+                                    <div>
+                                        <input type='file' name='foto' accept='.jpg,.jpeg,.png,.gif' formEncType='multipart/form-data' onChange={handleChange}  />
+                                        {imagenPerfil?(<p>Debe seleccionar un imagen</p>):("")}
+                                    </div>
 
-                                    {/*  <div className="form-check d-flex justify-content-center mb-5">
-                                         <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-                                         <label className="form-check-label" htmlFor="form2Example3g">
-                                             I agree all statements in <a href="#!" className="text-body"><u>Terms of service</u></a>
-                                         </label>
-                                     </div> */}
+
                                     <div className="d-flex justify-content-center">
                                         <button type='submit' className="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                                     </div>
