@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import FireBaseAuth from '@mui/icons-material/GitHub';
+
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PasswordIcon from '@mui/icons-material/Password';
 import GroupIcon from '@mui/icons-material/Group';
@@ -7,6 +7,7 @@ import Header from './header/Header';
 import Cookies from 'universal-cookie'
 import Swal from 'sweetalert2';
 import GoogleOAuth from './googleOAuth/GoogleOAuth';
+import FireBaseAuth from './firebase/FireBaseAuth';
 
 
 const Login = () => {
@@ -202,12 +203,9 @@ const Login = () => {
 
                                             </div>
                                             <div className='col-6'>
-
-                                            <FireBaseAuth />
-
-                                               
-
+                                            <FireBaseAuth/>
                                             </div>
+
                                         </div>
                                         
                                     </div>

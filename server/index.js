@@ -38,7 +38,7 @@ app.use(cors({
 
 
 const user = require('./controller/userController');
-app.use("/registro-usuario", upload.single("foto"),user.register);
+app.use("/registro-usuario", user.register);
  app.use('/login', user.login);
 
 
