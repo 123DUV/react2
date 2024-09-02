@@ -12,11 +12,20 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import React, { useContext } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import Cookies from 'universal-cookie'
-
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import MagicMenu from '../magicMenu/MagicMenu.js'
 import { dataContext } from '../context/DataContxt'
 import CartIcon from '../CartIcon';
 
 export default function Header() {
+    function whatsapp() {
+        const telefono = '3123123122'
+        const mensaje = 'Hola quiero mas info'
+        const url = `http://api.whatsapp.com/send?phone=${telefono}&texto=${encodeURIComponent(mensaje)}`
+        window.open(url, "_blank")
+    }
+  
+
     const { LibroDeCarrito } = useContext(dataContext)
 
     const totalItems = LibroDeCarrito.reduce((total, item) => total + item.cantidad, 0)
@@ -27,7 +36,11 @@ export default function Header() {
                 <div className="container-fluid">
                     <img src='mc.gif' className='logo' alt='' />
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <MagicMenu/>
+                        {/* <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+
                             <li className="nav-item" >
                                 <HomeIcon />
                                 <a className="nav-link active" aria-current="page" href="#">Inicio</a>
@@ -51,7 +64,16 @@ export default function Header() {
                                 </li>
                             </Link>
 
-                        </ul>
+                            <li className="nav-item">
+                                <WhatsAppIcon />
+                                <a className="nav-link " aria-disabled="true" onClick={whatsapp} >whatsapp</a>
+                            </li>
+
+
+                        </ul> */}
+                       
+                        
+
 
 
 
@@ -61,11 +83,13 @@ export default function Header() {
                                 <CartIcon />
                             </Link>
                         </div>
+                        
 
 
                     </div>
                 </div>
             </nav>
+
         </div>
     )
 }
